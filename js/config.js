@@ -5,8 +5,8 @@
    ========================================================== */
 
 const SUPABASE_CONFIG = {
-  url: "https://YOUR-PROJECT.supabase.co",
-  anonKey: "YOUR_PUBLIC_ANON_KEY"
+  url: "https://cijejranjgryetjmvrwv.supabase.co",
+  anonKey: "sb_publishable_1Tu_Z4Yq0M9kWPdzvGincg_2oTnf4bw"
 };
 
 /* Demo / reference image URLs for the six photo slots */
