@@ -395,13 +395,22 @@
       document.getElementById("appNumber").textContent = appNumber;
       window.scrollTo({ top: 0, behavior: "smooth" });
       window.showToast("Application submitted successfully.", "success");
-
     } catch (err) {
       console.error(err);
+      // Ye error mobile par popup kar dega
+      let errMsg = err.message || JSON.stringify(err);
+      alert("ERROR: " + errMsg);
+      
       window.showToast("Submission failed. Please try again.", "error");
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit Application";
     }
+  /*  } catch (err) {
+      console.error(err);
+      window.showToast("Submission failed. Please try again.", "error");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Application";
+    }*/
   });
 
   // ============ INIT ============
