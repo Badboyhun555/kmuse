@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recruitment — K MUSE NOVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="K MUSE NOVA logo" class="brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
+      <span class="brand-text" style="display:none;">K MUSE NOVA</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="recruitment.html" class="nav-link active">Recruitment</a>
+      <a href="recruitment.html" class="btn btn-primary nav-cta">Apply Now</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MAIN APPLICATION ============ -->
+<main class="recruit-page" id="recruitPage">
+
+  <section class="section">
+    <div class="container narrow center">
+      <p class="eyebrow">Application Portal</p>
+      <h1 class="hero-title small">Join K MUSE NOVA</h1>
+      <p class="section-lead">Submit your profile for consideration.</p>
+
+      <div class="info-pill" id="appOpenPill">
+        <span class="dot"></span>
+        <span>Applications are open</span>
+      </div>
+      <div class="age-pill">18+ Only</div>
+      <p class="muted-text">Applicants must be 18 years or older to submit an application.</p>
+    </div>
+  </section>
+
+  <!-- MAINTENANCE BANNER (hidden by default) -->
+  <div class="maintenance-banner" id="maintenanceBanner" style="display:none;">
+    <div class="container">
+      <strong>Applications are currently closed.</strong>
+      <span>Please check back later.</span>
+    </div>
+  </div>
+
+  <form id="applicationForm" class="form-wrap container" novalidate>
+
+    <!-- ============ 01 PERSONAL DETAILS ============ -->
+    <fieldset class="form-section">
+      <legend><span class="step-num">01</span> Personal Details</legend>
+
+      <div class="grid two">
+        <div class="field">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" name="fullName" required />
+        </div>
+        <div class="field">
+          <label for="dob">Date of Birth *</label>
+          <input type="date" id="dob" name="dob" required />
+        </div>
+        <div class="field">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" readonly placeholder="Auto-calculated" />
+          <small class="field-hint">Calculated automatically from date of birth.</small>
+        </div>
+        <div class="field">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Non-binary</option>
+            <option>Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" required />
+        </div>
+        <div class="field">
+          <label for="state">State / Region</label>
+          <input type="text" id="state" name="state" />
+        </div>
+        <div class="field">
+          <label for="country">Country *</label>
+          <input type="text" id="country" name="country" required />
+        </div>
+        <div class="field">
+          <label for="mobile">Mobile Number *</label>
+          <input type="tel" id="mobile" name="mobile" required />
+        </div>
+        <div class="field full">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" />
+        </div>
+      </div>
+      <div class="age-warning" id="ageWarning" style="display:none;">
+        Applicants must be 18 years or older to apply.
+      </div>
+    </fieldset>
+
+    <!-- ============ 02 PROFESSIONAL PROFILE ============ -->
+    <fieldset class="form-section">
+      <legend><span class="step-num">02</span> Professional Profile</legend>
+
+      <div class="grid two">
+        <div class="field">
+          <label for="primaryCat">Primary Category *</label>
+          <select id="primaryCat" name="primaryCat" required>
+            <option value="">Select</option>
+            <option>Fashion Model</option>
+            <option>Commercial Model</option>
+            <option>Actor</option>
+            <option>Dancer</option>
+            <option>Vocalist</option>
+            <option>Performer</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="secondaryCat">Secondary Category</label>
+          <select id="secondaryCat" name="secondaryCat">
+            <option value="">Select</option>
+            <option>Fashion Model</option>
+            <option>Commercial Model</option>
+            <option>Actor</option>
+            <option>Dancer</option>
+            <option>Vocalist</option>
+            <option>Performer</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="experience">Experience Level</label>
+          <select id="experience" name="experience">
+            <option value="">Select</option>
+            <option>Beginner</option>
+            <option>Some Experience</option>
+            <option>Professional</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="portfolio">Portfolio URL</label>
+          <input type="url" id="portfolio" name="portfolio" placeholder="https://" />
+        </div>
+        <div class="field">
+          <label for="instagram">Instagram URL</label>
+          <input type="url" id="instagram" name="instagram" placeholder="https://" />
+        </div>
+        <div class="field">
+          <label for="otherLink">Other Professional Link</label>
+          <input type="url" id="otherLink" name="otherLink" placeholder="https://" />
+        </div>
+        <div class="field">
+          <label for="languages">Languages</label>
+          <input type="text" id="languages" name="languages" placeholder="English, Hindi, Korean..." />
+        </div>
+        <div class="field">
+          <label for="skills">Skills</label>
+          <input type="text" id="skills" name="skills" placeholder="Acting, Dance, Singing..." />
+        </div>
+        <div class="field full">
+          <label for="about">About Yourself</label>
+          <textarea id="about" name="about" rows="4"></textarea>
+        </div>
+        <div class="field full">
+          <label for="motivation">Why do you want to join K MUSE NOVA?</label>
+          <textarea id="motivation" name="motivation" rows="4"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ============ 03 PORTFOLIO (Six Photos) ============ -->
+    <fieldset class="form-section">
+      <legend><span class="step-num">03</span> Portfolio</legend>
+      <p class="muted-text">Upload exactly six photographs. Each photo must be JPG, JPEG, PNG or WEBP under 5 MB.</p>
+
+      <div class="photo-grid" id="photoGrid">
+        <!-- Photo slots injected by recruitment.js -->
+      </div>
+    </fieldset>
+
+    <!-- ============ 04 INTRODUCTION VIDEO ============ -->
+    <fieldset class="form-section">
+      <legend><span class="step-num">04</span> Introduction Video <span class="optional-tag">Optional</span></legend>
+      <p class="muted-text">MP4, MOV or WEBM. Maximum 50 MB.</p>
+
+      <div class="video-upload" id="videoSlot">
+        <input type="file" id="videoFile" accept="video/mp4,video/quicktime,video/webm" hidden />
+        <div class="upload-placeholder" id="videoPlaceholder">
+          <p>Upload Introduction / Audition Video</p>
+          <button type="button" class="btn btn-ghost" onclick="document.getElementById('videoFile').click()">Choose Video</button>
+        </div>
+        <div class="upload-preview" id="videoPreview" style="display:none;">
+          <video id="videoPlayer" controls></video>
+          <div class="file-info">
+            <span id="videoFileName"></span>
+            <span id="videoFileSize"></span>
+          </div>
+          <button type="button" class="btn btn-ghost btn-sm" id="videoRemove">Remove</button>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ============ 05 CONSENT & SUBMISSION ============ -->
+    <fieldset class="form-section">
+      <legend><span class="step-num">05</span> Consent &amp; Submission</legend>
+
+      <label class="check">
+        <input type="checkbox" id="consent1" class="consent" />
+        <span>I confirm that I am 18 years or older and that the information provided by me is accurate.</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="consent2" class="consent" />
+        <span>I consent to K MUSE NOVA reviewing the information and portfolio material submitted for recruitment purposes.</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="consent3" class="consent" />
+        <span>I agree to the applicable recruitment terms and privacy notice.</span>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" disabled>Submit Application</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <!-- ============ SUCCESS STATE ============ -->
+  <section class="success-screen" id="successScreen" style="display:none;">
+    <div class="container narrow center">
+      <p class="eyebrow">Application Received</p>
+      <h2 class="section-title">Thank you for applying to K MUSE NOVA.</h2>
+      <p class="section-lead">Your application has been successfully received and will be reviewed.</p>
+
+      <div class="app-id-card">
+        <span class="app-id-label">Application ID</span>
+        <span class="app-id-value" id="appNumber">—</span>
+      </div>
+
+      <a href="index.html" class="btn btn-ghost">Return Home</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <h3>K MUSE NOVA</h3>
+      <p>Models &amp; Talent</p>
+    </div>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="recruitment.html">Recruitment</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </div>
+  <div class="footer-disclaimer container">
+    <p>© <span id="year"></span> K MUSE NOVA. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="js/config.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/recruitment.js"></script>
+</body>
+</html>
