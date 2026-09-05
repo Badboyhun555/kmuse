@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin — K MUSE NOVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <img src="assets/logo.png" alt="K MUSE NOVA logo" class="login-logo" onerror="this.style.display='none';" />
+    <p class="eyebrow center">Admin Portal</p>
+    <h1 class="login-title">K MUSE NOVA</h1>
+
+    <form id="loginForm" class="login-form">
+      <div class="field">
+        <label for="loginUser">Username</label>
+        <input type="text" id="loginUser" required autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" required autocomplete="current-password" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+
+    <p class="muted-text center small">
+      Experimental authentication. Not for production use.
+    </p>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="dashboard" id="dashboard" style="display:none;">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <img src="assets/logo.png" alt="K MUSE NOVA logo" class="sidebar-logo" onerror="this.style.display='none';" />
+      <div>
+        <strong>K MUSE NOVA</strong>
+        <span>Admin</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="side-link active" data-view="dashboard">Dashboard</a>
+      <a href="#" class="side-link" data-view="applications">Applications</a>
+      <a href="#" class="side-link" data-view="shortlisted">Shortlisted</a>
+      <a href="#" class="side-link" data-view="interview">Interview</a>
+      <a href="#" class="side-link" data-view="selected">Selected</a>
+      <a href="#" class="side-link" data-view="rejected">Rejected</a>
+      <a href="#" class="side-link" data-view="settings">Settings</a>
+      <a href="#" class="side-link logout" id="logoutBtn">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- OVERLAY (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- MAIN -->
+  <div class="dash-main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <h2 class="topbar-title" id="topbarTitle">Dashboard</h2>
+      <div class="topbar-right">
+        <span class="admin-name" id="adminName">Admin</span>
+      </div>
+    </header>
+
+    <!-- DASHBOARD VIEW -->
+    <section class="view view-dashboard active" id="view-dashboard">
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card"><span class="stat-label">Total Applications</span><span class="stat-num" data-stat="total">—</span></div>
+        <div class="stat-card"><span class="stat-label">Submitted</span><span class="stat-num" data-stat="submitted">—</span></div>
+        <div class="stat-card"><span class="stat-label">Under Review</span><span class="stat-num" data-stat="under_review">—</span></div>
+        <div class="stat-card"><span class="stat-label">Shortlisted</span><span class="stat-num" data-stat="shortlisted">—</span></div>
+        <div class="stat-card"><span class="stat-label">Interview</span><span class="stat-num" data-stat="interview">—</span></div>
+        <div class="stat-card"><span class="stat-label">Selected</span><span class="stat-num" data-stat="selected">—</span></div>
+        <div class="stat-card"><span class="stat-label">Rejected</span><span class="stat-num" data-stat="rejected">—</span></div>
+        <div class="stat-card"><span class="stat-label">Archived</span><span class="stat-num" data-stat="archived">—</span></div>
+      </div>
+    </section>
+
+    <!-- APPLICATIONS LIST VIEW -->
+    <section class="view" id="view-applications">
+      <div class="filters-bar">
+        <input type="search" id="searchInput" placeholder="Search by ID, name, mobile or email..." class="search-input" />
+
+        <select id="filterStatus" class="filter-select">
+          <option value="">All Status</option>
+          <option value="submitted">Submitted</option>
+          <option value="under_review">Under Review</option>
+          <option value="shortlisted">Shortlisted</option>
+          <option value="interview">Interview</option>
+          <option value="selected">Selected</option>
+          <option value="rejected">Rejected</option>
+          <option value="archived">Archived</option>
+        </select>
+
+        <select id="filterCategory" class="filter-select">
+          <option value="">All Categories</option>
+          <option>Fashion Model</option>
+          <option>Commercial Model</option>
+          <option>Actor</option>
+          <option>Dancer</option>
+          <option>Vocalist</option>
+          <option>Performer</option>
+          <option>Other</option>
+        </select>
+
+        <select id="filterExperience" class="filter-select">
+          <option value="">All Experience</option>
+          <option>Beginner</option>
+          <option>Some Experience</option>
+          <option>Professional</option>
+        </select>
+
+        <select id="sortSelect" class="filter-select">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">Name A-Z</option>
+          <option value="za">Name Z-A</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table class="app-table" id="appTable">
+          <thead>
+            <tr>
+              <th>Application ID</th>
+              <th>Applicant</th>
+              <th>Category</th>
+              <th>Age</th>
+              <th>City</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="appTbody"></tbody>
+        </table>
+        <div class="app-cards" id="appCards"></div>
+        <p class="empty-state" id="emptyState">No applications found.</p>
+      </div>
+    </section>
+
+    <!-- SHORTLISTED / INTERVIEW / SELECTED / REJECTED VIEWS -->
+    <section class="view" id="view-shortlisted"><div class="view-note">Showing shortlisted applications.</div></section>
+    <section class="view" id="view-interview"><div class="view-note">Showing applications in interview stage.</div></section>
+    <section class="view" id="view-selected"><div class="view-note">Showing selected talent.</div></section>
+    <section class="view" id="view-rejected"><div class="view-note">Showing rejected applications.</div></section>
+
+    <!-- SETTINGS VIEW -->
+    <section class="view" id="view-settings">
+      <div class="settings-card">
+        <h3 class="section-title small">Site Settings</h3>
+        <div class="grid two">
+          <div class="field">
+            <label for="setAgencyName">Agency Name</label>
+            <input type="text" id="setAgencyName" />
+          </div>
+          <div class="field">
+            <label for="setAgencyEmail">Agency Email</label>
+            <input type="email" id="setAgencyEmail" />
+          </div>
+          <div class="field">
+            <label for="setInstagram">Instagram URL</label>
+            <input type="url" id="setInstagram" />
+          </div>
+          <div class="field">
+            <label for="setApplicationsOpen">Applications Open</label>
+            <select id="setApplicationsOpen">
+              <option value="true">Open</option>
+              <option value="false">Closed</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="setMaintenance">Maintenance Mode</label>
+            <select id="setMaintenance">
+              <option value="false">Off</option>
+              <option value="true">On</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ APPLICATION DETAIL DRAWER ============ -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="appDrawer">
+  <header class="drawer-header">
+    <h3>Application Details</h3>
+    <button class="drawer-close" id="drawerClose">&times;</button>
+  </header>
+  <div class="drawer-body" id="drawerBody">
+    <!-- populated by admin.js -->
+  </div>
+</aside>
+
+<!-- ============ IMAGE PREVIEW MODAL ============ -->
+<div class="img-modal" id="imgModal">
+  <button class="img-modal-close" id="imgModalClose">&times;</button>
+  <img id="imgModalImg" src="" alt="Preview" />
+</div>
+
+<!-- ============ CONFIRMATION DIALOG ============ -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-card">
+    <p id="confirmText"></p>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost" id="confirmCancel">Cancel</button>
+      <button class="btn btn-primary" id="confirmOk">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="js/config.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
